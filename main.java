@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;      
 
-public class Main { // Гол Main класс
+public class Main { 
     public static void main(String[] args) {
         // Division объектууд үүсгэж байна (1: Employee заавал нэг Division-т харьяалагдана)
         Division hr = new Division("Human Resources"); // Хүний нөөцийн хэлтэс
