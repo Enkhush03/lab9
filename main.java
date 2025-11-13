@@ -1,49 +1,49 @@
-import java.util.ArrayList; // ArrayList ашиглахын тулд импортолж байна
-import java.util.Date;       // Date класс ашиглахын тулд импортолж байна
+import java.util.ArrayList;
+import java.util.Date;      
 
 public class Main { // Гол Main класс
-    public static void main(String[] args) { // Програмын гүйцэтгэл эндээс эхэлнэ
-        // --- Division объектууд үүсгэж байна (1: Employee заавал нэг Division-т харьяалагдана)
+    public static void main(String[] args) {
+        // Division объектууд үүсгэж байна (1: Employee заавал нэг Division-т харьяалагдана)
         Division hr = new Division("Human Resources"); // Хүний нөөцийн хэлтэс
         Division ceo = new Division("Zahiral");         // Захирлын хэлтэс
         Division finance = new Division("Sanhuu");      // Санхүүгийн хэлтэс
-        // --- JobDescription объектууд (1..n: Division олон ажлын тодорхойлолттой байж болно)
+        // JobDescription объектууд (1..n: Division олон ажлын тодорхойлолттой байж болно)
         JobDescription hrJob = new JobDescription("Managing staff");               // HR ажлын тодорхойлолт
         JobDescription ceoJob = new JobDescription("Overseeing company operations");// CEO ажлын тодорхойлолт
         JobDescription financeJob = new JobDescription("Managing financial records"); // Санхүүгийн ажлын тодорхойлолт
-        // --- Spouse объектууд үүсгэж байна (0..1: нэг ажилтан 0 эсвэл 1 эхнэр/нөхөртэй)
-        Spouse spouse1 = new Spouse("Enkhush", "SSN1", 19, new Date()); // Эхнэр 1
-        Spouse spouse2 = new Spouse("Baaska", "SSN2", 19, new Date());  // Эхнэр 2
-        Spouse spouse3 = new Spouse("Nandia", "SSN3", 19, new Date());  // Эхнэр 3
-        // --- Child объектууд үүсгэж байна (0..n: олон хүүхэдтэй байж болно)
-        Child c1 = new Child("Lego"); // хүүхдийн дуртай тоглоом
-        Child c2 = new Child("Car");  // хүүхдийн дуртай тоглоом
-        Child c3 = new Child("Ball"); // хүүхдийн дуртай тоглоом
-        // --- Хүүхдүүдийг ArrayList-д хадгалж байна
+        // Spouse объектууд үүсгэж байна (0..1: нэг ажилтан 0 эсвэл 1 эхнэр/нөхөртэй)
+        Spouse spouse1 = new Spouse("Sun", "SSN1", 25, new Date()); // object
+        Spouse spouse2 = new Spouse("Moon", "SSN2", 30, new Date());  
+        Spouse spouse3 = new Spouse("Ann", "SSN3", 32, new Date());  
+        // Child объектууд үүсгэж байна (0..n: олон хүүхэдтэй байж болно)
+        Child c1 = new Child("Lego"); //object 
+        Child c2 = new Child("Car");  
+        Child c3 = new Child("Ball"); 
+        // Хүүхдүүдийг ArrayList-д хадгалж байна
         ArrayList<Child> children1 = new ArrayList<>(); // e1 ажилтны хүүхдүүд
-        children1.add(c1); // нэг хүүхэд нэмэв
+        children1.add(c1); 
         ArrayList<Child> children2 = new ArrayList<>(); // e2 ажилтны хүүхдүүд
-        children2.add(c2); // хоёр хүүхэдтэй болгохын тулд хоёр toy нэмэв
+        children2.add(c2); 
         children2.add(c3);
         ArrayList<Child> children3 = new ArrayList<>(); // e3 ажилтны хүүхэд байхгүй
-        // --- Employee объектууд (Person-оос удамшсан)
+        //  Employee объектууд (Person-оос удамшсан)
         // бүрдэл объектууд: Division, JobDescription, Spouse, Children
         Employee e1 = new Employee("B1", "HR Manager", new Date(), hr, hrJob, spouse1, children1); // 1 ажилтан
         Employee e2 = new Employee("B2", "CEO", new Date(), ceo, ceoJob, spouse2, children2);      // 2 ажилтан
         Employee e3 = new Employee("B3", "Accountant", new Date(), finance, financeJob, null, children3); // эхнэргүй ажилтан
-        // --- Бүх ажилтныг ArrayList-д хадгална
+        //  Бүх ажилтныг ArrayList-д хадгална
         ArrayList<Employee> employees = new ArrayList<>();
         employees.add(e1); // ажилтан 1
         employees.add(e2); // ажилтан 2
         employees.add(e3); // ажилтан 3
-        // --- Ажилтны мэдээллийг хэвлэх
+        //  Ажилтны мэдээллийг хэвлэх
         for (Employee e : employees) { // ажилтан бүрийг давтаж
-            printEmployeeInfo(e);      // тусгай функц ашиглан мэдээлэл хэвлэнэ
+            printEmployeeInfo(e);      // мэдээлэл хэвлэнэ
         }
     }
-    static class Person { // Суурь класс: Person
+    static class Person { // Base класс: Person
         private String name;   // нэр
-        private String ssNum;  // нийгмийн дугаар
+        private String ssNum;  // дугаар
         private int age;       // нас
 
         public Person(String name, String ssNum, int age) { // байгуулагч функц
@@ -58,14 +58,14 @@ public class Main { // Гол Main класс
     }
 
     static class Spouse extends Person { // Spouse нь Person-оос удамшина
-        private Date anniversary; // гэрлэлт болсон огноо
+        private Date anniversary; // гэрлэсэн огноо
 
         public Spouse(String name, String ssNum, int age, Date anniversary) { // байгуулагч
             super(name, ssNum, age); // Person-ын байгуулагчийг дуудаж байна
             this.anniversary = anniversary;
         }
 
-        public Date getAnniversary() { return anniversary; } // гэрлэлт болсон огноо буцаах
+        public Date getAnniversary() { return anniversary; } // гэрлэсэн огноо буцаах
     }
 
     static class Child { // Хүүхдийн класс
@@ -133,12 +133,9 @@ public class Main { // Гол Main класс
         public Spouse getSpouse() { return spouse; }
         public ArrayList<Child> getChildren() { return children; }
     }
-
-    // ==================== PRINT FUNCTION ====================
-
     // Ажилтны бүх мэдээллийг хэвлэх функц
     public static void printEmployeeInfo(Employee e) {
-        System.out.println("========== Employee Info ==========");
+        System.out.println("Employee Information");
         System.out.println("Company ID: " + e.getCompanyID()); // компанийн ID хэвлэх
         System.out.println("Title: " + e.getTitle());           // албан тушаал
         System.out.println("Start Date: " + e.getStartDate());  // ажилд орсон огноо
@@ -147,7 +144,7 @@ public class Main { // Гол Main класс
         // Эхнэр/нөхөр байгаа эсэхийг шалгах
         if (e.getSpouse() != null) {
             System.out.println("Spouse Name: " + e.getSpouse().getName());         // нэр
-            System.out.println("Anniversary: " + e.getSpouse().getAnniversary());  // гэрлэлт болсон өдөр
+            System.out.println("Anniversary: " + e.getSpouse().getAnniversary());  // гэрлэсэн өдөр
         } else {
             System.out.println("Spouse: None"); // байхгүй бол
         }
@@ -160,6 +157,6 @@ public class Main { // Гол Main класс
         } else {
             System.out.println("No children"); // хүүхэд байхгүй бол
         }
-        System.out.println("===================================\n"); // хуваагч мөр
+        System.out.println(" \n"); // хуваагч мөр
     }
 }
