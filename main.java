@@ -38,7 +38,7 @@ public class main {
 
        
 }
-
+//main дотор объектгүйгээр printEmployeeInfo(e)-г шууд дуудахын тулд printEmployeeInfo-г static болгосон.
 static class Person {
     private String name;
     private String ssNum;
@@ -90,7 +90,7 @@ static class Employee {
     private JobDescription jobDescription;
     private Spouse spouse;
     private Child child;
-
+// Employee class - ажилчдын үндсэн мэдээлэл болон бүрдэл объектуудыг агуулна
     public Employee(String companyID, String title, Date startDate, Division division,
                     JobDescription jobDescription, Spouse spouse, Child child) {
         this.companyID = companyID;
